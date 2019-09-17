@@ -10,9 +10,11 @@ const load = async ({ curretURL = config.API_URL } = {}) => {
 
   const { data } = await http.get(curretURL)
 
-  const formatedData = data.results.map(formatData)
-
-  await Character.insertMany(formatedData)
+  const containsResults = data && data.results
+  if (containsResults) {
+    const formatedData = data.results.map(formatData)
+    await Character.insertMany(formatedData)
+  }
 
   const nextURL = data.info && data.info.next
   if (nextURL) {
