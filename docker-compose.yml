@@ -1,0 +1,17 @@
+version: "3.1"
+
+services:
+  app:
+    build:
+      context: ./crawler
+      dockerfile: Dockerfile
+    container_name: crawler
+    command: npm start
+    environment:
+      - DB_URI=mongodb://mongodb:27017/multiverse
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null
