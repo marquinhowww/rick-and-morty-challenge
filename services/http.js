@@ -1,5 +1,5 @@
 const axios = require('axios')
 
 module.exports = {
-  axios
+  http: axios
 }

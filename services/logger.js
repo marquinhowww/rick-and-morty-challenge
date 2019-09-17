@@ -1,5 +1,6 @@
 const logger = {
-  info: console.info
+  info: console.info,
+  error: console.error
 }
 
 module.exports = {
