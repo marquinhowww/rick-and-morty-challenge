@@ -1,14 +1,13 @@
 const { Character } = require('../database/models')
-const axios = require('axios')
 const { config } = require('../config')
 const { formatData } = require('./formatData')
 const { connect } = require('../database')
-const { logger } = require('../log')
+const { logger, http } = require('../services')
 
 const load = async ({ curretURL = config.API_URL } = {}) => {
   logger.info('Current URL', curretURL)
 
-  const { data } = await axios.get(curretURL)
+  const { data } = await http.get(curretURL)
 
   const formatedData = data.results.map(formatData)
 
