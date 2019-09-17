@@ -44,4 +44,39 @@ describe('dataLoader', () => {
     expect(httpGetSpy).toBeCalledWith(config.API_URL)
     expect(httpGetSpy).toBeCalledWith(fakeURL)
   })
+
+  it('should call insertMany with formated data', async () => {
+    const name = 'Evil Enzo'
+    const image = 'http://image.com/enzo'
+    const originName = 'Earth 2012'
+
+    const httpGetSpy = jest.spyOn(http, 'get')
+      .mockImplementationOnce(() => ({
+        data: {
+          results: [{
+            name,
+            image,
+            origin: {
+              name: originName
+            }
+          }]
+        }
+      }))
+
+    const insertManySpy = jest.spyOn(Character, 'insertMany')
+      .mockImplementation(() => { })
+
+    await dataLoader.load()
+
+    const expectArgument = [{
+      name,
+      image,
+      origin: originName
+    }]
+
+    expect(httpGetSpy).toBeCalledTimes(1)
+    expect(httpGetSpy).toBeCalledWith(config.API_URL)
+    expect(insertManySpy).toBeCalledTimes(1)
+    expect(insertManySpy).toBeCalledWith(expectArgument)
+  })
 })
