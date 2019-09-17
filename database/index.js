@@ -1,3 +1,4 @@
+const { Character } = require('./models')
 const { config } = require('../config')
 const mongoose = require('mongoose')
 
@@ -8,5 +9,8 @@ const connect = () =>
   })
 
 module.exports = {
-  connect
+  connect,
+  models: {
+    Character
+  }
 }

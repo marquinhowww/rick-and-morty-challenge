@@ -1,8 +1,9 @@
-const { Character } = require('../database/models')
 const { config } = require('../config')
+const { connect, models } = require('../database')
 const { formatData } = require('./formatData')
-const { connect } = require('../database')
 const { logger, http } = require('../services')
+
+const { Character } = models
 
 const load = async ({ curretURL = config.API_URL } = {}) => {
   logger.info('Current URL', curretURL)
@@ -17,9 +18,11 @@ const load = async ({ curretURL = config.API_URL } = {}) => {
   if (nextURL) {
     return load({ curretURL: nextURL })
   }
+
+  logger.info('Load completed')
 }
 
 connect()
   .then(load)
   .then(_ => process.exit())
-  .catch(err => console.log(err))
+  .catch(err => logger.error(err))
