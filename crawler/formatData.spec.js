@@ -20,7 +20,7 @@ describe('formatData', () => {
       name,
       image,
       origin: originName,
-      dataVersion
+      version: dataVersion
     }
 
     const result = formatData(rawData)

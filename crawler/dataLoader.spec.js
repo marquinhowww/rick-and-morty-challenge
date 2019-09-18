@@ -5,6 +5,8 @@ const dataLoader = require('./dataLoader')
 
 const { Character } = models
 
+const dataVersion = 'fake-uuid-v4'
+
 describe('dataLoader', () => {
   beforeEach(() => {
     jest.restoreAllMocks()
@@ -18,7 +20,7 @@ describe('dataLoader', () => {
     const httpGetSpy = jest.spyOn(http, 'get')
       .mockImplementation(() => ({ data: {} }))
 
-    await dataLoader.load()
+    await dataLoader.load({ dataVersion })
 
     expect(httpGetSpy).toBeCalledTimes(1)
     expect(httpGetSpy).toHaveBeenCalledWith(config.API_URL)
@@ -38,7 +40,7 @@ describe('dataLoader', () => {
         data: {}
       }))
 
-    await dataLoader.load()
+    await dataLoader.load({ dataVersion })
 
     expect(httpGetSpy).toBeCalledTimes(2)
     expect(httpGetSpy).toBeCalledWith(config.API_URL)
@@ -66,12 +68,13 @@ describe('dataLoader', () => {
     const insertManySpy = jest.spyOn(Character, 'insertMany')
       .mockImplementation(() => { })
 
-    await dataLoader.load()
+    await dataLoader.load({ dataVersion })
 
     const expectArgument = [{
       name,
       image,
-      origin: originName
+      origin: originName,
+      version: dataVersion
     }]
 
     expect(httpGetSpy).toBeCalledTimes(1)
