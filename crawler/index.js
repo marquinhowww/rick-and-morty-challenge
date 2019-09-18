@@ -20,4 +20,4 @@ cron.schedule(config.SCHEDULE_EXPRESSION, async () => {
   } catch (error) {
     logger.error(error)
   }
-}
+})
