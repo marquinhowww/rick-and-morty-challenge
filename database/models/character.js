@@ -14,6 +14,10 @@ const CharacterSchema = Schema({
   origin: {
     type: String,
     required: true
+  },
+  version: {
+    type: String,
+    required: true
   }
 })
 

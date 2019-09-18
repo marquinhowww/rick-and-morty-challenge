@@ -1,4 +1,4 @@
-const { Character } = require('./models')
+const { Character, CurrentVersion } = require('./models')
 const { config } = require('../config')
 const mongoose = require('mongoose')
 
@@ -11,6 +11,7 @@ const connect = () =>
 module.exports = {
   connect,
   models: {
-    Character
+    Character,
+    CurrentVersion
   }
 }

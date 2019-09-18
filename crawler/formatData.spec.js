@@ -5,19 +5,22 @@ describe('formatData', () => {
     const name = 'Evil Enzo'
     const image = 'http://image.com/enzo'
     const originName = 'Earth 2012'
+    const dataVersion = '123'
 
     const rawData = {
       name,
       image,
       origin: {
         name: originName
-      }
+      },
+      dataVersion
     }
 
     const expected = {
       name,
       image,
-      origin: originName
+      origin: originName,
+      dataVersion
     }
 
     const result = formatData(rawData)

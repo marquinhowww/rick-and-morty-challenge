@@ -1,7 +1,8 @@
-const formatData = ({ name, image, origin }) => ({
+const formatData = ({ name, image, origin, dataVersion }) => ({
   name,
   image,
-  origin: origin.name
+  origin: origin.name,
+  version: dataVersion
 })
 
 module.exports = {
