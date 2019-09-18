@@ -6,7 +6,9 @@ const { updateDataVersion, removeOldVersionData } = require('./dataVersion')
 const cron = require('node-cron')
 const uuid = require('uuid/v4')
 
-cron.schedule(config.SCHEDULE_EXPRESSION, async () => {
+logger.info(`scheduling ${config.SCHEDULE_EXPRESSION}`)
+
+const start = async () => {
   try {
     const dataVersion = uuid()
 
@@ -20,4 +22,8 @@ cron.schedule(config.SCHEDULE_EXPRESSION, async () => {
   } catch (error) {
     logger.error(error)
   }
-})
+}
+
+cron.schedule(config.SCHEDULE_EXPRESSION, start)
+
+start()
