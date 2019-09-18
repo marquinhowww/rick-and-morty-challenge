@@ -1,7 +1,6 @@
 const { models } = require('../database')
 
-const { CurrentVersion } = models
-const { Character } = models
+const { CurrentVersion, Character } = models
 
 const updateDataVersion = async ({ newVersion }) => {
   const currentVersion = await CurrentVersion.findOne({})
