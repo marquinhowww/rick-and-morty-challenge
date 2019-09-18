@@ -1,4 +1,5 @@
 const { Character, CurrentVersion } = require('./models')
+const pagination = require('./pagination')
 const { config } = require('../config')
 const mongoose = require('mongoose')
 
@@ -10,6 +11,7 @@ const connect = () =>
 
 module.exports = {
   connect,
+  pagination,
   models: {
     Character,
     CurrentVersion

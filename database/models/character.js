@@ -5,7 +5,8 @@ const { Schema } = mongoose
 const CharacterSchema = Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    text: true
   },
   image: {
     type: String,
