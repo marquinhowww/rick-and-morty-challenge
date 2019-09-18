@@ -4,7 +4,7 @@ services:
   crawler:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: crawler.Dockerfile
     container_name: crawler
     command: node crawler
     environment:
@@ -14,7 +14,7 @@ services:
   api:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: api.Dockerfile
     container_name: api
     command: node api
     environment:
