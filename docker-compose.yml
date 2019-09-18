@@ -8,7 +8,7 @@ services:
     container_name: crawler
     command: node crawler
     environment:
-      - DB_URI=mongodb://mongodb:27017/multiverse
+      - DB_URL=mongodb://mongodb:27017/multiverse
     depends_on:
       - mongodb
   api:
@@ -18,9 +18,12 @@ services:
     container_name: api
     command: node api
     environment:
-      - DB_URI=mongodb://mongodb:27017/multiverse
+      - DB_URL=mongodb://mongodb:27017/multiverse
+      - PORT=3001
     depends_on:
       - mongodb
+    ports:
+      - 3001:3001
   mongodb:
     image: mongo:latest
     container_name: mongodb
