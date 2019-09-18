@@ -1,12 +1,22 @@
 version: "3.1"
 
 services:
-  app:
+  crawler:
     build:
       context: ./
       dockerfile: Dockerfile
     container_name: crawler
     command: node crawler
+    environment:
+      - DB_URI=mongodb://mongodb:27017/multiverse
+    depends_on:
+      - mongodb
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: api
+    command: node api
     environment:
       - DB_URI=mongodb://mongodb:27017/multiverse
     depends_on:
