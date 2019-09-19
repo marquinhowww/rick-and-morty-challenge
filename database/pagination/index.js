@@ -21,7 +21,9 @@ const buildPaginationParams = ({ query }) => {
 }
 
 const calculateTotalPages = ({ paginationInfo, limit }) =>
-  paginationInfo ? Math.ceil(paginationInfo.count / limit) : 0
+  paginationInfo &&
+    paginationInfo.count !== undefined
+    ? Math.ceil(paginationInfo.count / limit) : 0
 
 module.exports = {
   buildPaginationParams,
