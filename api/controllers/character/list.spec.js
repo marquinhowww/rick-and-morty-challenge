@@ -1,12 +1,19 @@
 const { list } = require('./list')
 const { models } = require('../../../database')
 
-const { Character } = models
+const { Character, CurrentVersion } = models
 
 describe('character/list', () => {
   beforeEach(() => {
     jest.restoreAllMocks()
     jest.resetAllMocks()
+
+    jest.spyOn(CurrentVersion, 'findOne')
+      .mockImplementation(() => {
+        return {
+          dataVersion: 'fakeversion'
+        }
+      })
   })
 
   it('should add $match pipeline on pipelines', async () => {

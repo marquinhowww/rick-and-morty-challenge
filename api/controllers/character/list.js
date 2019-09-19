@@ -1,14 +1,22 @@
 const { models, pagination } = require('../../../database')
 const { logger } = require('../../../services')
 
-const { Character } = models
+const { Character, CurrentVersion } = models
 const { buildPaginationParams, calculateTotalPages } = pagination
+
+const getCurrentVersion = async () => {
+  const { dataVersion } = await CurrentVersion.findOne()
+
+  return dataVersion
+}
 
 const list = async (req, res) => {
   try {
     const { page, limit, skip, search, sort } = buildPaginationParams({
       query: req.query
     })
+
+    const curretDataVersion = await getCurrentVersion()
 
     const pipelines = []
 
@@ -24,6 +32,11 @@ const list = async (req, res) => {
     }
 
     const basePipeline = [
+      {
+        $match: {
+          version: curretDataVersion
+        }
+      },
       {
         $group: {
           _id: '$name',
