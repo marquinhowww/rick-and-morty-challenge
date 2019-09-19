@@ -22,7 +22,7 @@
         }
       }
     },
-    "/": {
+    "/count": {
       "get": {
         "parameters": [
           {
