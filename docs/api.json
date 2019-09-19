@@ -1,0 +1,91 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Rick and Morty",
+    "description": "wubba lubba dub dub"
+  },
+  "basePath": "/",
+  "paths": {
+    "/status": {
+      "get": {
+        "description": "health check",
+        "responses": {
+          "200": {
+            "description": "status.",
+            "schema": {
+              "type": "string",
+              "description": "ok"
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "description": "Número da página desejada",
+            "default": "1",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "description": "Limite de items em uma página",
+            "default": "10",
+            "required": false
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "type": "string",
+            "description": "Busca por texto nos nomes dos personagens",
+            "required": false
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "type": "string",
+            "description": "Define a ordenação com base no campo dimensions_count",
+            "default": "desc",
+            "enum": ["asc", "desc"],
+            "required": false
+          }
+        ],
+        "description": "Mostrar todos os usuários que no endereço contem a palavra ```suite```",
+        "responses": {
+          "200": {
+            "description": "Uma lista de personagens",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CharacterCount"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CharacterCount": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dimensions_count": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
