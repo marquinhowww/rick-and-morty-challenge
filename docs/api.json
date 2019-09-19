@@ -5,7 +5,8 @@
     "title": "Rick and Morty",
     "description": "wubba lubba dub dub"
   },
-  "basePath": "/",
+  "host": "localhost:3001",
+  "schemes": ["http"],
   "paths": {
     "/status": {
       "get": {
