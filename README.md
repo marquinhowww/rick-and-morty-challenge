@@ -8,7 +8,9 @@
 docker compose up
 ```
 
-Acesse [http://localhost:3002](http://localhost:3002) para ver a documentação da API.
+[_Sobre o docker compose_](https://docs.docker.com/compose/)
+
+Após inicar os processos, acesse [http://localhost:3002](http://localhost:3002) para ver a documentação da API.
 
 # Testes
 
