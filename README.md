@@ -2,7 +2,7 @@
 
 ![it defies all logic](morty.jpg)
 
-# Running the projeto:
+# Running the project:
 
 ```bash
 docker compose up
