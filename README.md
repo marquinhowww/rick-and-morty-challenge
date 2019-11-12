@@ -2,17 +2,19 @@
 
 ![it defies all logic](morty.jpg)
 
-# Executar o projeto:
+# Running the projeto:
 
 ```bash
 docker compose up
 ```
 
-[_Sobre o docker compose_](https://docs.docker.com/compose/)
+[_About docker compose_](https://docs.docker.com/compose/)
 
-Após inicar os processos, acesse [http://localhost:3002](http://localhost:3002) para ver a documentação da API.
+# Docs:
+[http://localhost:3002](http://localhost:3002)
 
-# Testes
+
+# Test
 
 ```bash
 npm run test
