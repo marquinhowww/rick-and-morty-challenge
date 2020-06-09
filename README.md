@@ -68,7 +68,7 @@ Exemplo: https://github.com/seuNome/pet-code;
 - Envie-nos o link do projeto. Exemplo: https://github.com/seuNome/test-nodejs.git
 - Pronto! Basta aguardar o nosso RH entrar em contato. Entramos em contato rapidinho ;)
 
-*Achou nosso teste divertido? Já pensou em tentar [nosso teste em Ruby também](https://github.com/petlove/vagas/tree/master/backend-ruby)?*
+-----
 
 # Solução
 
